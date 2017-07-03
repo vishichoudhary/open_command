@@ -46,8 +46,8 @@ function enter_data(){
 		else
 			size=`$main_1 "use data_open; select size from data_open_table where ext_name='$1';"`
 			let size=size+1
-			$main "use data_open; update data_open_table set app$size='$app_name', size='$size' where ext_name='$1';"
-			echo "doesn't exist"
+			$main "use data_open; update data_open_table set app$size='$app_name', size='$size' where ext_name='$1';" >> /dev/null 2>&1
+			echo "Added to the database :"
 	fi
 }
 i="y" 

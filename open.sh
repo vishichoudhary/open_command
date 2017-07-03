@@ -9,11 +9,12 @@ function main_function(){
 	if [ "$ext" == '' ]
 		then
 			echo "Error: extension missing:"
-			return 
-		fi
+		else
+			echo "open_script in progress"
+	fi
 }
 function enter_function(){
-	echo "in progress"
+	./enter_script.sh
 }
 if [ "$1" == "121" ]
 	then
