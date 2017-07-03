@@ -32,9 +32,11 @@ function fetch_data(){
 			read choice
 			selected_app=`$main_1 "use data_open; select app$choice from data_open_table where ext_name='$1';"`
 			echo $selected_app
+			$selected_app $2
 		fi
 }
-echo "Enter the name of extension :"
-read ext_name
-fetch_data $ext_name
+#echo "Enter the name of extension :"
+#read ext_name
+ext_name="$2"
+fetch_data $ext_name "$1"
 

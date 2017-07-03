@@ -10,7 +10,7 @@ function main_function(){
 		then
 			echo "Error: extension missing:"
 		else
-			echo "open_script in progress"
+			./fetch_script.sh "$1" "$ext"
 	fi
 }
 function enter_function(){
