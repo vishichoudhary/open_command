@@ -1,6 +1,5 @@
 #!/bin/bash
-printf "Enter password for your mysql root account:"
-read passwd
+passwd="$3"
 main="mysql -u root --password=$passwd -e"
 function fetch_data(){
 	main_1="mysql -u root --password=$passwd -N -e"

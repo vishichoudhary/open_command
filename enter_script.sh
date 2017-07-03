@@ -1,6 +1,5 @@
 #!/bin/bash
-printf "Enter password for your mysql root account:"
-read passwd
+passwd="$1"
 main="mysql -u root --password=$passwd -e"
 function check_db_tb(){
 	$main "create database if not exists data_open;"
