@@ -1,17 +1,6 @@
 #!/bin/bash
-i=5
-while [ $i -ne 0 ]
-	do
-   		printf "[sudo] password for $USER:" && read -s passwd
-    	echo ""
-    	sudo -k -S ls <<< $passwd > /dev/null 2>&1
-    	i=$?
-    	if [ $i -ne 0 ]
-    	then
-        	sleep 1
-        	echo "[sudo], try again."
-    	fi
-	done
+printf "Enter password for your mysql root account:"
+read passwd
 main="mysql -u root --password=$passwd -e"
 function check_db_tb(){
 	$main "create database if not exists data_open;"
@@ -39,10 +28,11 @@ function enter_data(){
 	$main "use data_open; insert into data_open_table(ext_name,size) values('$1','0');" >> /dev/null 2>&1
 	if [ $? -eq 1 ]
 		then
-			echo "it exist"
+			printf "it exist, "
 			size=`$main_1 "use data_open; select size from data_open_table where ext_name='$1';"`
 			let size=size+1
 			$main "use data_open;update data_open_table set size='$size',app$size='$app_name' where ext_name='$1';"	>> /dev/null 2>&1
+			echo "updated with values"
 		else
 			size=`$main_1 "use data_open; select size from data_open_table where ext_name='$1';"`
 			let size=size+1

@@ -1,17 +1,6 @@
 #!/bin/bash
-i=5
-while [ $i -ne 0 ]
-	do
-   		printf "[sudo] password for $USER:" && read -s passwd
-    	echo ""
-    	sudo -k -S ls <<< $passwd > /dev/null 2>&1
-    	i=$?
-    	if [ $i -ne 0 ]
-    	then
-        	sleep 1
-        	echo "[sudo], try again."
-    	fi
-	done
+printf "Enter password for your mysql root account:"
+read passwd
 main="mysql -u root --password=$passwd -e"
 function fetch_data(){
 	main_1="mysql -u root --password=$passwd -N -e"
