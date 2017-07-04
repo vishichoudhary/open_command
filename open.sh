@@ -3,11 +3,8 @@ printf "Enter password for your mysql root account:"
 read passwd
 function main_function(){
 	input=$1
-	IFS='.'
-	read -a input <<< $input
-	name=${input[0]}
-	ext=${input[1]}
-	IFS=$OIFS
+	name="${input:: -4}"
+	ext="${input: -3}"
 	if [ "$ext" == '' ]
 		then
 			echo "Error: extension missing:"
